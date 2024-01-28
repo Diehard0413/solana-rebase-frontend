@@ -1,0 +1,121 @@
+.ngx-pagination {
+  margin: 0 !important;
+  padding: 16px 0 !important;
+  flex-flow: row wrap;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center;
+  align-items: center;
+}
+
+.ngx-pagination::before, .ngx-pagination::after {
+  content: ' ';
+  display: flex;
+}
+
+.ngx-pagination::after {
+  clear: both;
+}
+
+.ngx-pagination li {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  border-radius: 0;
+  margin: 4px;
+}
+
+.ngx-pagination li:first-child {
+  background: var(--ion-third-background);
+  border-radius: 8px !important;
+  margin-right: 16px;
+}
+
+.ngx-pagination li:last-child {
+  background: var(--ion-third-background);
+  border-radius: 8px !important;
+  margin-left: 16px;
+}
+
+.ngx-pagination li {
+  display: inline-block;
+}
+
+.ngx-pagination a,
+.ngx-pagination button {
+  color: var(--ion-text-color) !important;
+  display: block;
+  padding: 8px 16px !important;
+  border-radius: 8px !important;
+  transition: all .2s ease-in-out;
+}
+
+.ngx-pagination a:hover,
+.ngx-pagination button:hover {
+  padding: 8px 16px !important;
+  background: var(--ion-color-primary) !important;
+  color: var(--ion-color-primary-contrast) !important;
+}
+
+.ngx-pagination .current {
+  padding: 8px 16px !important;
+  background: var(--ion-color-primary) !important;
+  color: black !important;
+  cursor: default;
+  border-radius: 8px;
+}
+
+.ngx-pagination .disabled {
+  padding: 8px 16px !important;
+  color: var(--ion-secondary-text) !important;
+  background: var(--ion-color-primary-shade) !important;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.ngx-pagination .disabled:hover {
+  background: transparent;
+}
+
+.ngx-pagination a, .ngx-pagination button {
+  cursor: pointer;
+}
+
+.ngx-pagination .pagination-previous a::before,
+.ngx-pagination .pagination-previous.disabled::before {
+  content: '<' !important;
+  display: inline-block;
+  margin-right: 0 !important;
+  color: var(--color-contrast);
+  font-weight: 700;
+}
+
+.ngx-pagination .pagination-next a::after,
+.ngx-pagination .pagination-next.disabled::after {
+  content: '>' !important;
+  display: inline-block;
+  margin-left: 0 !important;
+  color: var(--color-contrast);
+  font-weight: 700;
+}
+
+.ngx-pagination .show-for-sr {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.ngx-pagination .small-screen {
+  display: none;
+}
+
+@media screen and (max-width: 601px) {
+  .ngx-pagination.responsive .small-screen {
+    display: inline-block;
+  }
+  .ngx-pagination.responsive li:not(.small-screen):not(.pagination-previous):not(.pagination-next) {
+    display: none;
+  }
+}

@@ -1,0 +1,175 @@
+<!-- <ion-content scrollbar>
+    <ion-grid class="m-0 p-0">
+        <ion-row class="m-0 p-0">
+            <ion-col size-lg="9" size-md="7.5" size-sm="12" size-xs="12"  class="m-0 p-0">
+                <div class="section__container mt-0">
+
+                    <div class="cards mt-24">
+
+                        <div class="cards__item">
+                            <div class="card">
+                                <div class="card__content">
+                                    <div fxLayout="column">
+                                        <ion-label class="title secondary-text mb-24">Token</ion-label>
+
+                                        <div fxLayout="row" fxLayoutAlign="start center">
+                                            <div fxLayout="row">
+                                                <img class="h-38 w-38" src="assets/icon/favicon.png">
+                                                <img class="h-38 w-38 token-logo-second"
+                                                     src="assets/icon/favicon.png">
+                                            </div>
+                                            <div fxLayout="row" class="mx-8">
+                                                <ion-label class="title bold">RMC-</ion-label>
+                                                <ion-label class="title bold">RMC</ion-label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cards__item">
+                            <div class="card">
+                                <div class="card__content">
+                                    <div fxLayout="column">
+                                        <ion-label class="title secondary-text mb-24">Staking Pool</ion-label>
+                                        <ion-label class="big-title bold ">{{distributedInfo?.accPerShareBnb}}
+                                            <span class="title secondary-text">BNB</span></ion-label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cards__item">
+                            <div class="card">
+                                <div class="card__content">
+                                    <div fxLayout="column">
+                                        <ion-label class="title secondary-text mb-24">APR</ion-label>
+
+                                        <ion-label class="big-title bold ">{{distributedInfo?.apr}}%</ion-label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="cards__item ">
+                            <div class="card transparent-background">
+                                <div class="card__content bb">
+                                    <div fxLayout="column">
+                                        <ion-label class="title secondary-text mb-24">Penalty Fee</ion-label>
+
+
+                                        <ion-label  class="big-title bold">{{distributedInfo?.penaltyFee}}%</ion-label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cards__item">
+                            <div class="card transparent-background">
+                                <div class="card__content bb">
+                                    <div fxLayout="column">
+                                        <ion-label class="title secondary-text mb-24">Staking Count</ion-label>
+
+                                        <div fxLayout="row">
+                                            <app-dev-seer-countdown-component
+                                                    *ngIf="distributedInfo?.endTimeStamp"
+                                                    [eventDate]="distributedInfo?.endTimeStamp">
+                                            </app-dev-seer-countdown-component>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cards__item">
+                            <div class="card transparent-background ">
+                                <div class="card__content bb">
+                                    <div fxLayout="column">
+                                        <ion-label class="title secondary-text mb-24">Next Harvest</ion-label>
+
+                                        <div fxLayout="row">
+                                            {{distributedInfo?.nextclaimedAt  | date: 'MMMM d, y, h:mm:ss'}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cards__item w-50-p">
+                            <div class="card secondary-background">
+                                <div class="card__content ">
+                                    <div fxLayout="column" class="w-100-p">
+                                        <ion-label class="title secondary-text mb-24">Stake your tokens</ion-label>
+
+
+                                        <div class="w-100-p " style="position:relative;">
+
+                                            <ion-input class="input w-100-p mt-6"
+                                                       [min]="0"
+                                                       [(ngModel)]="stakeAmount"
+                                                       placeholder="0.00"></ion-input>
+                                            <div style="position: absolute;top: 16px;right: 16px; z-index: 9;">
+                                                <ion-button size="small">
+                                                    <ion-label class="small-text bold">Max</ion-label>
+                                                </ion-button>
+                                            </div>
+                                        </div>
+                                        <div class="w-100-p  pt-16">
+                                            <ion-button *ngIf="apporval" class="w-100-p" mode="ios"
+                                                        (click)="deposite()">
+                                                <ion-spinner *ngIf="spinner"></ion-spinner>
+                                                <ion-label *ngIf="!spinner" class="subtitle bold">Stake
+                                                </ion-label>
+                                            </ion-button>
+
+
+                                            <ion-button *ngIf="!apporval" class="w-100-p" mode="ios"
+                                                        (click)="approve()">
+                                                <ion-spinner *ngIf="spinner"></ion-spinner>
+                                                <ion-label *ngIf="!spinner" class="subtitle bold">Approve
+                                                </ion-label>
+                                            </ion-button>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cards__item w-50-p">
+                            <div class="card secondary-background">
+                                <div class="card__content ">
+                                    <div fxLayout="column">
+                                        <ion-label class="title secondary-text mb-24">Estimated Rewards Pending</ion-label>
+
+                                        <ion-label class="subtitle secondary-text mb-20">
+                                            Pending rewards come from dividend that distribution of Hello earnings to
+                                            its
+                                            shareholders.
+                                        </ion-label>
+                                        <ion-label class="subtitle secondary-text mb-10">
+                                            ${{distributedInfo?.pendingBUSD | currency}}</ion-label>
+                                                                                    
+                                        <ion-label
+                                                class="big-title bold ">{{distributedInfo?.pending | rounding}} <span class="title secondary-text">BNB</span></ion-label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </ion-col>
+            <ion-col  size-lg="3" size-md="4.5" size-sm="12" size-xs="12" class="m-0 p-0 right-place">
+                <div class="account-container">
+                    <app-account></app-account>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+    <app-footer></app-footer>
+</ion-footer> -->

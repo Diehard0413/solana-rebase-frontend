@@ -1,0 +1,129 @@
+
+
+.b-col-1 {
+  border-right: 1px solid var(--ion-border-color);
+  @media(max-width: 991px) {
+    border-right: none;
+    border-bottom: 1px solid var(--ion-border-color);
+    padding-bottom: 16px;
+  }
+}
+
+.b-col-5 {
+  border-right: 1px solid var(--ion-border-color);
+  @media(max-width: 991px) {
+    border-right: none;
+    border-bottom: 1px solid var(--ion-border-color);
+  }
+}
+
+.b-additional {
+  border-right: 1px solid var(--ion-border-color);
+  border-bottom: 1px solid var(--ion-border-color);
+  @media(max-width: 991px) {
+    border-right: none;
+    //border-bottom: 1px solid var(--ion-border-color);
+    padding-bottom: 16px;
+  }
+
+}
+
+.bg-image {
+  background-repeat: no-repeat;
+  background-size: 205%;
+  background-position-y: center;
+  background-position-x: 90%;
+
+  &.img1 {
+    background-image: url(../../../assets/backgrounds/claim_background.svg);
+  }
+
+  &.img2 {
+
+    background-image: url(../../../assets/backgrounds/balance_background.svg);
+
+  }
+
+  &.img3 {
+    background-image: url(../../../assets/backgrounds/total_background.svg);
+
+  }
+
+  &.img4 {
+    background-image: url(../../../assets/backgrounds/time_background.svg);
+  }
+}
+
+.bc-2 {
+  background-repeat: no-repeat;
+  background-size: 205%;
+  background-position-y: center;
+  background-position-x: 90%;
+}
+
+.bc-3 {
+  background-repeat: no-repeat;
+  background-size: 205%;
+  background-position-y: center;
+  background-position-x: 90%;
+}
+
+.bc-4 {
+  background-repeat: no-repeat;
+  background-size: 205%;
+  background-position-y: center;
+  background-position-x: 90%;
+}
+
+.token-logo-second {
+  margin-left: -12px;
+  border-radius: 100%;
+  box-shadow: -4px 1px 7px var(--ion-background-color);
+  -moz-box-shadow: -4px 1px 7px var(--ion-background-color);
+  -webkit-box-shadow: -4px 1px 7px var(--ion-background-color);
+  -khtml-box-shadow: -4px 1px 7px var(--ion-background-color);
+}
+
+
+.input {
+  //padding: 31px 0 0 0;
+  width: 100%;
+  min-width: 100%;
+  max-width: 900px;
+  --box-shadow: none;
+  --background: transparent;
+
+  ::ng-deep input {
+    border-radius: 8px;
+    border: solid 2px;
+    transition: all .2s ease-in-out;
+    background-color: var(--ion-background-color);
+    padding: 16px 82px 16px 16px;
+    border-color: var(--ion-border-color);
+
+    &:focus {
+      border-color: var(--ion-color-primary);
+    }
+
+  }
+
+  ::ng-deep textarea {
+    border-radius: 8px;
+    border: solid 2px;
+    transition: all .2s ease-in-out;
+    background-color: var(--ion-background-color);
+    padding: 8px 16px;
+    border-color: var(--ion-border-color);
+
+    &:focus {
+      border-color: var(--ion-color-primary);
+    }
+  }
+
+}
+
+
+
+ion-content{
+  --background: url(../././../../assets/background/background.png) no-repeat 100% 100%;
+}

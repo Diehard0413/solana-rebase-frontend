@@ -1,0 +1,468 @@
+<!--<ion-header class="main-header" scrollbar="true">-->
+<!--    <ion-toolbar class="nav-toolbar bb  px-16 py-8">-->
+<!--        <div fxLayout="row" fxLayoutAlign="space-between center">-->
+<!--            <div fxLayoutAlign="start center" fxLayout="row" class="token-selector">-->
+<!--                <div class="logo-container mr-8">-->
+<!--                    <img class="logo  h-34" src="assets/logos/logo.png">-->
+<!--                </div>-->
+<!--                &lt;!&ndash;                <ion-label class="bold title max-characters">Americium</ion-label>&ndash;&gt;-->
+<!--            </div>-->
+
+<!--            <div fxLayout="row" fxLayoutAlign="center center">-->
+<!--                <ion-button *ngIf="wallet === undefined && currentWindowWidth > 991" mode="ios"-->
+<!--                            class="mr-16"-->
+<!--                            (click)="connect()">Connect-->
+<!--                    <ion-spinner *ngIf="spinner"></ion-spinner>-->
+<!--                </ion-button>-->
+
+<!--                <div class="pr-16 br" fxLayout="row" fxLayoutAlign="center center" *ngIf="currentWindowWidth > 991">-->
+<!--                    <ion-icon style="font-size: 24px" class="mr-8" *ngIf="selected" name="sunny-outline"></ion-icon>-->
+<!--                    <ion-icon style="font-size: 24px" class="mr-8" *ngIf="!selected" name="moon-outline"></ion-icon>-->
+<!--                    <ion-toggle mode="ios" class="custom-toggle" slot="end" color="primary" #toggle-->
+<!--                                [(ngModel)]="selected"-->
+<!--                                (ngModelChange)="dynamicTheme(toggle)"></ion-toggle>-->
+<!--                </div>-->
+<!--                <ion-button *ngIf="wallet === undefined && currentWindowWidth < 991" size="small" mode="ios"-->
+<!--                            class="mx-16"-->
+<!--                            (click)="connect()">Connect-->
+<!--                    <ion-spinner *ngIf="spinner"></ion-spinner>-->
+<!--                </ion-button>-->
+
+
+<!--                <div *ngIf="wallet !== undefined && currentWindowWidth > 991" fxLayout="row"-->
+<!--                     fxLayoutAlign="center center" class="mx-16">-->
+<!--                    <ion-icon size="large" src="assets/icons/eth.svg"></ion-icon>-->
+<!--                    <div fxLayout="column" class="ml-8">-->
+<!--                        <ion-label class="small-text secondary-text bold " *ngIf="balance">-->
+<!--                            BNB {{balance | rounding}} </ion-label>-->
+<!--                        <ion-label class="small-text secondary-text bold " *ngIf="balanceUsd">-->
+<!--                            ${{balanceUsd | currency}}</ion-label>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div *ngIf="wallet !== undefined && currentWindowWidth > 991" class="profile-button ml-31">-->
+<!--                    <div class="wallet-button">-->
+<!--                        <ion-icon style="color: black" name="wallet-outline"></ion-icon>-->
+<!--                    </div>-->
+<!--                    <ion-label id="wallet-address" class="p-8 small-text secondary-text bold">{{shorten}}</ion-label>-->
+<!--                    <ion-label style="display: none;" id="wallet-address1"-->
+<!--                               class="p-8 small-text secondary-text bold">{{wallet}}</ion-label>-->
+<!--                    <ion-icon copyToClipboard-->
+<!--                              [targetId]="'wallet-address1'"-->
+<!--                              (error)="error()"-->
+<!--                              (success)="success()"-->
+<!--                              color="primary"-->
+<!--                              name="copy-outline"-->
+<!--                              class="cursor-pointer"></ion-icon>-->
+<!--                </div>-->
+
+
+<!--                <ion-button fill="clear" class="mr-8" mode="ios" [disabled]="logingOut" (click)="logout()"-->
+<!--                            *ngIf="wallet !== undefined && currentWindowWidth > 991">-->
+<!--                    <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>-->
+<!--                </ion-button>-->
+
+<!--                &lt;!&ndash;                <ion-button [ngStyle]="wallet == undefined && {'display': 'none'}" fill="clear" routerLink="/profile"&ndash;&gt;-->
+<!--                &lt;!&ndash;                            class="mr-8" mode="ios" *ngIf="currentWindowWidth < 991">&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <ion-icon *ngIf="profile === undefined " slot="icon-only" name="person-circle-outline"></ion-icon>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <div *ngIf="profile !== undefined && wallet !== undefined" class="avatar medium">&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <img [src]="profile">&ndash;&gt;-->
+<!--                &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </ion-button>&ndash;&gt;-->
+<!--                <ion-menu-toggle>-->
+<!--                    <ion-button fill="clear">-->
+<!--                        <ion-icon slot="icon-only" name="menu"></ion-icon>-->
+<!--                    </ion-button>-->
+<!--                </ion-menu-toggle>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </ion-toolbar>-->
+<!--</ion-header>-->
+
+<ion-header mode="ios" style="background: transparent" class="main-header"
+            *ngIf="currentWindowWidth > 991">
+    <ion-toolbar mode="ios" style="--background: transparent; --border-width: 0;">
+        <div class="py-14">
+
+            <div fxLayout="row" fxLayoutAlign="center none" class="menu__top" *ngIf="currentWindowWidth > 991">
+                <div fxLayout="row" fxLayoutAlign="end end"
+                     style="width: 100%; max-width: 1824px; min-width:952px; padding: 0 64px">
+
+                    <div fxLayout="row" fxLayoutAlign="center center">
+                        <ion-button *ngIf="wallet === undefined && currentWindowWidth > 991" mode="ios"
+                                    class="mr-16"
+                                    (click)="connect()">Connect Wallet
+                            <ion-spinner *ngIf="spinner"></ion-spinner>
+                        </ion-button>
+                        <div class="pl-16 ml-16 " fxLayout="row" fxLayoutAlign="center center"
+                             *ngIf="currentWindowWidth > 991">
+                            <ion-icon style="font-size: 24px" class="mr-8" *ngIf="selected"
+                                      name="sunny-outline"></ion-icon>
+                            <ion-icon style="font-size: 24px" class="mr-8" *ngIf="!selected"
+                                      name="moon-outline"></ion-icon>
+                            <ion-toggle mode="ios" class="custom-toggle" slot="end" color="primary" #toggle
+                                        [(ngModel)]="selected"
+                                        (ngModelChange)="dynamicTheme(toggle)"></ion-toggle>
+                        </div>
+
+                        <div *ngIf="wallet !== undefined && currentWindowWidth > 991" fxLayout="row"
+                             fxLayoutAlign="center center" class="mx-16">
+                            <ion-icon size="large" src="assets/icons/eth.svg"></ion-icon>
+                            <div fxLayout="column" class="ml-8">
+                                <ion-label class="small-text secondary-text bold " *ngIf="balance">
+                                    ETH {{balance | rounding}} </ion-label>
+                                <ion-label class="small-text secondary-text bold " *ngIf="balanceUsd">
+                                    ${{balanceUsd | currency}}</ion-label>
+                            </div>
+                        </div>
+                        <div *ngIf="wallet !== undefined && currentWindowWidth > 991" class="profile-button ml-31">
+                            <div class="wallet-button">
+                                <ion-icon style="color: black" name="wallet-outline"></ion-icon>
+                            </div>
+                            <ion-label id="wallet-address"
+                                       class="p-8 small-text secondary-text bold">{{shorten}}</ion-label>
+                            <ion-label style="display: none;" id="wallet-address1"
+                                       class="p-8 small-text secondary-text bold">{{wallet}}</ion-label>
+                            <ion-icon copyToClipboard
+                                      [targetId]="'wallet-address1'"
+                                      (error)="error()"
+                                      (success)="success()"
+                                      color="primary"
+                                      name="copy-outline"
+                                      class="cursor-pointer"></ion-icon>
+                        </div>
+                        <ion-button fill="clear" class="mr-8" mode="ios" [disabled]="logingOut" (click)="logout()"
+                                    *ngIf="wallet !== undefined && currentWindowWidth > 991">
+                            <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+                        </ion-button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--    <ion-title>landing-page</ion-title>-->
+    </ion-toolbar>
+</ion-header>
+
+<ion-header *ngIf="currentWindowWidth < 991" mode="ios" class="main-header">
+    <ion-toolbar mode="ios" style="--background: transparent; --border-width: 0;">
+        <div class="py-14">
+            <div fxLayout="row" fxLayoutAlign="space-between center"
+                 class="toolbar__size hamburger__menu ion-margin-horizontal">
+
+                <div class="logo-style py-4 cursor-pointer" [routerLink]="'/main/dashboard'"
+                     *ngIf="currentWindowWidth < 991">
+                    <img src="assets/logos/logo.png">
+                </div>
+
+                <div>
+                    <ion-button *ngIf="wallet === undefined && currentWindowWidth < 991" size="small" mode="ios"
+                                class="mx-16"
+                                (click)="connect()">Connect Wallet
+                        <ion-spinner *ngIf="spinner"></ion-spinner>
+                    </ion-button>
+                    <ion-menu-toggle>
+                        <ion-button fill="clear">
+                            <ion-icon slot="icon-only" name="menu"></ion-icon>
+                        </ion-button>
+                    </ion-menu-toggle>
+                </div>
+
+
+            </div>
+
+
+            <div fxLayout="row" fxLayoutAlign="center none" class="menu__top" *ngIf="currentWindowWidth > 991">
+                <div fxLayout="row" fxLayoutAlign="space-between center"
+                     style="width: 100%; max-width: 1824px; min-width:952px; padding: 0 64px">
+                    <div [routerLink]="'/main/dashboard'" class="cursor-pointer">
+                        <img style="width: 160px;" src="assets/logos/logo.png">
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="center center">
+                        <div *ngIf="currentWindowWidth > 991" fxLayout="row" fxLayoutAlign="center center"
+                             class="px-16">
+                            <div *ngFor="let p of appPages; let i = index" class="w-100-p ">
+                                <ion-item lines="none" routerDirection="root" [routerLink]="[p.url]"
+                                          routerLinkActive="selected"
+                                          detail="false" class="ion-transparent-background">
+                                    <ion-label class="small-title bold"
+                                               routerLinkActive="selected">{{ p.title }}</ion-label>
+
+                                </ion-item>
+                            </div>
+                        </div>
+                        <ion-button *ngIf="wallet === undefined && currentWindowWidth > 991" mode="ios"
+                                    class="mr-16"
+                                    (click)="connect()">Connect Wallet
+                            <ion-spinner *ngIf="spinner"></ion-spinner>
+                        </ion-button>
+                        <div class="pl-16 ml-16 bl" fxLayout="row" fxLayoutAlign="center center"
+                             *ngIf="currentWindowWidth > 991">
+                            <ion-icon style="font-size: 24px" class="mr-8" *ngIf="selected"
+                                      name="sunny-outline"></ion-icon>
+                            <ion-icon style="font-size: 24px" class="mr-8" *ngIf="!selected"
+                                      name="moon-outline"></ion-icon>
+                            <ion-toggle mode="ios" class="custom-toggle" slot="end" color="primary" #toggle
+                                        [(ngModel)]="selected"
+                                        (ngModelChange)="dynamicTheme(toggle)"></ion-toggle>
+                        </div>
+
+                        <div *ngIf="wallet !== undefined && currentWindowWidth > 991" fxLayout="row"
+                             fxLayoutAlign="center center" class="mx-16">
+                            <ion-icon size="large" src="assets/icons/eth.svg"></ion-icon>
+                            <div fxLayout="column" class="ml-8">
+                                <ion-label class="small-text secondary-text bold " *ngIf="balance">
+                                    ETH {{balance | rounding}} </ion-label>
+                                <ion-label class="small-text secondary-text bold " *ngIf="balanceUsd">
+                                    ${{balanceUsd | currency}}</ion-label>
+                            </div>
+                        </div>
+                        <div *ngIf="wallet !== undefined && currentWindowWidth > 991" class="profile-button ml-31">
+                            <div class="wallet-button">
+                                <ion-icon style="color: black" name="wallet-outline"></ion-icon>
+                            </div>
+                            <ion-label id="wallet-address"
+                                       class="p-8 small-text secondary-text bold">{{shorten}}</ion-label>
+                            <ion-label style="display: none;" id="wallet-address1"
+                                       class="p-8 small-text secondary-text bold">{{wallet}}</ion-label>
+                            <ion-icon copyToClipboard
+                                      [targetId]="'wallet-address1'"
+                                      (error)="error()"
+                                      (success)="success()"
+                                      color="primary"
+                                      name="copy-outline"
+                                      class="cursor-pointer"></ion-icon>
+                        </div>
+                        <ion-button fill="clear" class="mr-8" mode="ios" [disabled]="logingOut" (click)="logout()"
+                                    *ngIf="wallet !== undefined && currentWindowWidth > 991">
+                            <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+                        </ion-button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--    <ion-title>landing-page</ion-title>-->
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-split-pane contentId="main">
+        <ion-menu side="start" menuId="first" type="push" contentId="main" class="side-spacing">
+            <div class="side-background secondary-background h-100-p pt-48 " style="overflow: auto">
+                <div fxLayout="column" fxLayoutAlign="start center" class="h-100-p">
+
+
+                    <div class="pb-48">
+                        <div class="logo-style visibility  cursor-pointer" [routerLink]="'/dashboard'">
+                            <img src="assets/logos/logo.png">
+                        </div>
+<!--                        <div class="ion-text-center">-->
+<!--                            <ion-label class="title bold">EtherOhm</ion-label>-->
+<!--                        </div>-->
+                    </div>
+
+
+                    <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index" class="w-100-p ">
+                        <ion-item lines="none" routerDirection="root" [routerLink]="[p.url]" routerLinkActive="selected"
+                                  detail="false" class="ion-transparent-background">
+                            <div class="menu-button">
+                                <ion-button fill="clear">
+                                    <ion-icon slot="icon-only" [src]="p.icon"></ion-icon>
+                                </ion-button>
+                                <ion-label>{{ p.title }}</ion-label>
+                            </div>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-accordion-group class="w-100-p transparent-background">
+                        <ion-accordion value="first" class="transparent-background">
+                            <ion-item slot="header" class="ion-transparent-background">
+                                <div class="menu-button">
+                                    <ion-button fill="clear">
+                                        <ion-icon slot="icon-only" src="assets/icons/discount.svg"></ion-icon>
+                                    </ion-button>
+                                    <ion-label>ETF Bond</ion-label>
+                                </div>
+                            </ion-item>
+                            <div class="ion-padding" slot="content">
+                                <ion-menu-toggle auto-hide="false" *ngFor="let p of subPages; let i = index"
+                                                 class="w-100-p ">
+                                    <ion-item lines="none" routerDirection="root" [routerLink]="[p.url]"
+                                              routerLinkActive="selected"
+                                              detail="false" class="ion-transparent-background">
+                                        <div class="menu-button">
+                                            <ion-label>{{ p.title }}</ion-label>
+                                        </div>
+                                    </ion-item>
+                                </ion-menu-toggle>
+                            </div>
+                        </ion-accordion>
+                    </ion-accordion-group>
+
+
+                    <div class="w-100-p p-16" *ngIf="currentWindowWidth < 991">
+                        <div fxLayout="column" fxLayoutAlign="start center" class="pb-16">
+                            <div fxLayout="row" fxLayoutAlign="start center" *ngIf="wallet !== undefined">
+                                <ion-label style="display: none;" id="wallet-address3"
+                                           class="p-8 small-text secondary-text bold">{{wallet}}</ion-label>
+                                <ion-label class="small-text secondary-text bold mr-8">{{shorten}}
+                                </ion-label>
+                                <ion-icon copyToClipboard
+                                          [targetId]="'wallet-address3'"
+                                          (error)="error()"
+                                          (success)="success()"
+                                          color="primary"
+                                          name="copy-outline"
+                                          class="cursor-pointer"></ion-icon>
+                            </div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="start center" class="dc-card b p-8">
+                            <div class="w-40">
+                                <img src="assets/icons/eth.svg">
+                            </div>
+                            <div fxLayout="column" class="ml-8">
+                                <ion-label class="small-text secondary-text">Balance</ion-label>
+                                <div>
+                                    <ion-label class="subtitle bold  mr-8"> {{balance | rounding}} ETH</ion-label>
+                                    <ion-label class="subtitle secondary-text bold">
+                                        ${{balanceUsd | currency}}</ion-label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <ion-list mode="ios" class="py-8 transparent-background">
+                            <ion-item lines="none" [button]="true" [detail]="false" class="ion-transparent-background">
+                                <ion-icon slot="start" size="small" name="contrast-outline"></ion-icon>
+                                <ion-label *ngIf="!selected" class="subtitle bold">Dark theme</ion-label>
+                                <ion-label *ngIf="selected" class="subtitle bold">Light theme</ion-label>
+                                <ion-toggle mode="ios" slot="end" color="primary" #toggle
+                                            [(ngModel)]="selected"
+                                            (ngModelChange)="dynamicTheme(toggle)"></ion-toggle>
+                            </ion-item>
+                        </ion-list>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <ion-footer class="ion-no-border secondary-background">
+
+
+                <div fxLayout="row" fxLayoutAlign="center center" class="my-16 pt-16">
+
+                    <a href=""
+                       target="_blank"
+                       class="text-color">
+                        <ion-icon class="mr-18 hover-color" src="assets/icons/1.svg"></ion-icon>
+                    </a>
+
+                    <a href="" target="_blank"
+                       class="text-color">
+                        <ion-icon class="hover-color" src="assets/icons/2.svg"></ion-icon>
+                    </a>
+
+
+                </div>
+
+
+                <div fxLayout="column" fxLayoutAlign="center center" class="mb-42" *ngIf="wallet !== undefined">
+                    <ion-button class="counter-button" [disabled]="logingOut" (click)="logout()">
+                        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+                    </ion-button>
+                    <ion-label class="small-text bold mt-8">Log Out</ion-label>
+                </div>
+            </ion-footer>
+        </ion-menu>
+        <!-- the main content -->
+        <ion-router-outlet id="main">
+        </ion-router-outlet>
+    </ion-split-pane>
+</ion-content>
+
+<!--<ion-popover trigger="nested-button" mode="ios" alignment="start" arrow="true" style="&#45;&#45;min-width: 280px"-->
+<!--             dismiss-on-select="true" show-backdrop="false">-->
+<!--    <ng-template>-->
+<!--        <ion-content class=" ion-secondary-background">-->
+
+<!--            <div class="ion-padding secondary-background">-->
+<!--                <div class="pb-12 bb" fxLayout="row" fxLayoutAlign="start center">-->
+<!--                    <img *ngIf="profile" style="border-radius: 50%" class="h-30 w-30 mr-8" [src]="profile">-->
+<!--                    <ion-label>{{username}}</ion-label>-->
+<!--                </div>-->
+<!--                <div fxLayout="column" fxLayoutAlign="start center" class="py-16">-->
+<!--                    &lt;!&ndash;                            <ion-label class="small-title bold">{{username}}</ion-label>&ndash;&gt;-->
+<!--                    <div fxLayout="row" fxLayoutAlign="start center">-->
+<!--                        <ion-label style="display: none;" id="wallet-address3"-->
+<!--                                   class="p-8 small-text secondary-text bold">{{wallet}}</ion-label>-->
+<!--                        <ion-label class="small-text secondary-text bold mr-8">{{shorten}}-->
+<!--                        </ion-label>-->
+<!--                        <ion-icon copyToClipboard-->
+<!--                                  [targetId]="'wallet-address3'"-->
+<!--                                  (error)="error()"-->
+<!--                                  (success)="success()"-->
+<!--                                  color="primary"-->
+<!--                                  name="copy-outline"-->
+<!--                                  class="cursor-pointer"></ion-icon>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div fxLayout="row" fxLayoutAlign="start center" class="dc-card b p-8">-->
+<!--                    <div class="avatar medium">-->
+<!--                        <img src="assets/icons/eth.svg">-->
+<!--                    </div>-->
+<!--                    <div fxLayout="column" class="ml-8">-->
+<!--                        <ion-label class="small-text secondary-text">Balance</ion-label>-->
+<!--                        <div>-->
+<!--                            <ion-label class="subtitle bold  mr-8"> {{balance | rounding}}BNB-->
+<!--                            </ion-label>-->
+<!--                            <ion-label class="subtitle secondary-text bold">-->
+<!--                                ${{balanceUsd | currency}}</ion-label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <ion-list mode="ios" class="py-8 transparent-background">-->
+<!--                    <ion-item lines="full" [button]="true" [detail]="false"-->
+<!--                              class="ion-transparent-background">-->
+<!--                        <ion-icon slot="start" size="small" name="contrast-outline"></ion-icon>-->
+<!--                        <ion-label *ngIf="!selected" class="subtitle bold">Dark theme</ion-label>-->
+<!--                        <ion-label *ngIf="selected" class="subtitle bold">Light theme</ion-label>-->
+<!--                        <ion-toggle mode="ios " class="custom-toggle" slot="end" color="primary" #toggle-->
+<!--                                    [(ngModel)]="selected"-->
+<!--                                    (ngModelChange)="dynamicTheme(toggle)"></ion-toggle>-->
+<!--                    </ion-item>-->
+<!--                    <ion-item [disabled]="logingOut" lines="full" [button]="true" [detail]="false"-->
+<!--                              class="ion-transparent-background"-->
+<!--                              [disabled]="logingOut" (click)="logout()">-->
+<!--                        <ion-icon slot="start" size="small" name="log-out-outline"></ion-icon>-->
+<!--                        <ion-label class="subtitle bold">Disconnect</ion-label>-->
+<!--                    </ion-item>-->
+<!--                </ion-list>-->
+<!--            </div>-->
+<!--        </ion-content>-->
+<!--        <ion-footer>-->
+<!--        </ion-footer>-->
+<!--    </ng-template>-->
+<!--</ion-popover>-->
+
+
+<!--<mde-popover #token="mdePopover" [mdePopoverPositionX]="'before'" [mdePopoverOverlapTrigger]="false">-->
+<!--    <div class="third-background w-200 p-16 border-radius-16">-->
+<!--        <ion-list>-->
+<!--            <div *ngFor="let token of tokens">-->
+<!--                <ion-item lines="none" button="true" (click)="changeTheme(token.theme, token)">-->
+<!--                    <div fxLayout="row" fxLayoutAlign="start center">-->
+<!--                        <ion-img [src]="token.logo" class="w-24 h-24 mr-8"></ion-img>-->
+<!--                        <ion-label class="subtitle bold"> {{token.title}}</ion-label>-->
+<!--                    </div>-->
+<!--                </ion-item>-->
+<!--            </div>-->
+<!--        </ion-list>-->
+<!--    </div>-->
+<!--</mde-popover>-->

@@ -1,0 +1,63 @@
+<ion-content class="background-img">
+    <div class="animated">
+        <div class="wrapper">
+            <div class="two"></div>
+            <div class="three"></div>
+            <div class="four"></div>
+            <div class="text"></div>
+        </div>
+    </div>
+    <div class="section__container mt-0" style="z-index: 999; position: relative">
+        <div>
+            <div>
+                <ion-label class="big-title bold">My Balances</ion-label>
+            </div>
+            <div>
+                <ion-label class="small-title secondary-text">Manage your SAFU balances</ion-label>
+            </div>
+        </div>
+
+        <div style="max-width: 680px; width: 100%; margin: auto;">
+          <div class="pt-64 pb-34">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6">
+                  <div class="pb-8">
+                    <ion-label class="small-title secondary-text">My Balances</ion-label>
+                  </div>
+                  <div>
+                    <ion-label class="h3 bold">ETH {{walletInfo?.ethBalance}}</ion-label>
+                  </div>
+                </ion-col>
+
+                <ion-col size="6">
+                  <div class="ion-text-end">
+                    <div class="pb-8">
+                      <ion-label class="small-title secondary-text">SAFU Price</ion-label>
+                    </div>
+                    <div>
+                      <ion-label class="h3 bold">${{walletInfo?.tokenPrice | currency}}</ion-label>
+                    </div>
+                  </div>
+
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+
+
+          <div class="dc-card p-24">
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="pb-24">
+              <ion-label class="title bold">SAFU</ion-label>
+              <div fxLayout="column" >
+                <ion-label class="title bold"> {{walletInfo?.tokenBalance}} SAFU</ion-label>
+                <ion-label class="small-text secondary-text">${{walletInfo?.tokenBalanceUsdt | currency}}</ion-label>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+    </div>
+</ion-content>

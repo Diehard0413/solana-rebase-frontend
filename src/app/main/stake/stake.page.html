@@ -1,0 +1,257 @@
+<ion-content class="background-img">
+    <div class="animated">
+        <div class="wrapper">
+            <div class="two"></div>
+            <div class="three"></div>
+            <div class="four"></div>
+            <div class="text"></div>
+        </div>
+    </div>
+    <div class="section__container mt-0" style="z-index: 999; position: relative">
+
+        <div>
+            <div>
+                <ion-label class="big-title bold">Stake and Unstake</ion-label>
+            </div>
+            <div>
+                <ion-label class="small-title secondary-text">Stake $SAFU to be exempt from token debase and earn
+                    protocol rewards
+                </ion-label>
+            </div>
+        </div>
+
+        <div style="max-width: 960px; width: 100%; margin: auto;" class="pt-64">
+
+
+            <div class="dc-card p-24">
+                <div class="pb-34">
+                    <ion-label class="h3 bold">$SAFU 401(k) Staking</ion-label>
+                </div>
+
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size-lg="4" size-md="12" size-sm="12" size-xs="12">
+                            <div class="ion-text-center">
+                                <div class="pb-8">
+                                    <ion-label class="small-title secondary-text">Daily APR</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label class="h3 bold">{{stakingInfo?.dailyapr}}%</ion-label>
+                                </div>
+                            </div>
+                        </ion-col>
+                        <ion-col size-lg="4" size-md="12" size-sm="12" size-xs="12">
+                            <div class="ion-text-center">
+                                <div class="pb-8">
+                                    <ion-label class="small-title secondary-text">APR</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label class="h3 bold">{{stakingInfo?.apr}}%</ion-label>
+                                </div>
+                            </div>
+                        </ion-col>
+                        <ion-col size-lg="4" size-md="12" size-sm="12" size-xs="12">
+                            <div class="ion-text-center">
+                                <div class="pb-8">
+                                    <ion-label class="small-title secondary-text">Total Staked</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label class="h3 bold">{{stakingInfo?.totalTokens}} $SAFU</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label class="h3 bold">({{stakingInfo?.totalTokensUsdt | currency}})</ion-label>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+
+
+                <!-- This is visible when wallet is not connected-->
+                <div fxLayout="column" fxLayoutAlign="center center" class="connect-wallet" *ngIf="wallet === undefined">
+                    <ion-label class="title bold">Connect Your Wallet</ion-label>
+                    <ion-label class="subtitle secondary-text">To stake SAFU tokens</ion-label>
+                </div>
+
+
+                <!-- This is visible when wallet is not connected-->
+                <div *ngIf="wallet !== undefined" >
+                    <ion-segment value="default" class=" my-24" mode="md" [(ngModel)]="segment">
+                        <ion-segment-button value="stake" (select)="true">
+                            <ion-label class=" ">Stake</ion-label>
+                        </ion-segment-button>
+                        <ion-segment-button value="unstake">
+                            <ion-label>Unstake</ion-label>
+                        </ion-segment-button>
+                    </ion-segment>
+                    <div [ngSwitch]="segment">
+                        <div *ngSwitchCase="'stake'">
+
+                            <ion-grid>
+                                <ion-row>
+                                    <ion-col size-lg="8" size-md="12" size-sm="12" size-xs="12">
+                                        <div class="w-100-p " style="position:relative;">
+                                            <ion-input class="input w-100-p mt-6"
+                                                       [min]="0"
+                                                       [(ngModel)]="stakeAmount"
+                                                       type="number"
+                                                       placeholder="0.00"></ion-input>
+                                            <div style="position: absolute;top: 10px;right: 30px; z-index: 9;">
+                                                <ion-button size="small" fill="clear" (click)="addMax()">
+                                                    <ion-label class="subtitle bold">Max</ion-label>
+                                                </ion-button>
+                                            </div>
+                                        </div>
+                                    </ion-col>
+                                    <ion-col size-lg="2" size-md="12" size-sm="12" size-xs="12">
+                                        <div class="pt-2">
+                                            <ion-button *ngIf="!isApproved"  mode="ios" expand="block" color="dark"
+                                                        class="ion-text-capitalize"
+                                                        size="large" (click)="approve()">
+                                                        <ion-spinner *ngIf="spinnerWrapper.isApproving" ></ion-spinner>
+                                                        <span *ngIf="!spinnerWrapper.isApproving" >Approve</span>
+                                            </ion-button>
+
+                                             <ion-button *ngIf="isApproved"  mode="ios" expand="block" color="dark"
+                                                        class="ion-text-capitalize"
+                                                        size="large" (click)="deposit()">
+                                                        <ion-spinner *ngIf="spinnerWrapper.isDepositing"></ion-spinner>
+                                                        <span *ngIf="!spinnerWrapper.isDepositing">Stake</span>
+                                            </ion-button>
+                                        </div>
+
+                                    </ion-col>
+                                    <ion-col size-lg="2" size-md="12" size-sm="12" size-xs="12">
+                                        <div class="pt-2">
+                                            <ion-button mode="ios" expand="block" color="dark"
+                                                        class="ion-text-capitalize"
+                                                        size="large" (click)="claim()">
+                                                        <ion-spinner *ngIf="spinnerWrapper.isClaiming" ></ion-spinner>
+                                                        <span *ngIf="!spinnerWrapper.isClaiming" >Claim</span>
+                                            </ion-button>
+                                        </div>
+
+                                    </ion-col>
+                                    <ion-col>
+                                        <div class="py-8">
+                                            <ion-button mode="ios" color="dark" class="ion-text-capitalize"
+                                                        expand="block"
+                                                        size="large" (click)="compund()">
+                                                        <ion-spinner *ngIf="spinnerWrapper.isCompounding" ></ion-spinner>
+                                                        <span *ngIf="!spinnerWrapper.isClaiming" >Compound</span>
+                                            </ion-button>
+                                        </div>
+
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                            <div class="ion-text-center">
+                                <ion-label class="small-text secondary-text">Note: The "Approve" transaction is only
+                                    needed
+                                    when staking/unstaking for the first time; subsequent staking/unstaking only
+                                    requires
+                                    you to perform the "Stake" or "Unstake" transaction.
+                                </ion-label>
+                            </div>
+
+                        </div>
+                        <div *ngSwitchCase="'unstake'">
+                            <ion-grid>
+                                <ion-row>
+                                    <ion-col size-lg="8" size-md="12" size-sm="12" size-xs="12">
+                                        <div class="w-100-p " style="position:relative;">
+                                            <ion-input class="input w-100-p mt-6"
+                                                       [min]="0"
+                                                       [(ngModel)]="stakeAmount"
+                                                       type="number"
+                                                       placeholder="0.00"></ion-input>
+                                            <div style="position: absolute;top: 10px;right: 30px; z-index: 9;">
+                                                <ion-button size="small" fill="clear" (click)="addMax()">
+                                                    <ion-label class="subtitle bold">Max</ion-label>
+                                                </ion-button>
+                                            </div>
+                                        </div>
+                                    </ion-col>
+                                    <ion-col size-lg="2" size-md="12" size-sm="12" size-xs="12">
+                                        <div class="pt-2">
+                                            <ion-button mode="ios" expand="block" color="dark"
+                                                        class="ion-text-capitalize"
+                                                        size="large" (click)="unstake()">
+                                                        <ion-spinner *ngIf="spinnerWrapper.isUnstaking" ></ion-spinner>
+                                                        <span *ngIf="!spinnerWrapper.isUnstaking" >Unstake</span>
+                                            </ion-button>
+                                        </div>
+
+                                    </ion-col>
+                                    <ion-col size-lg="2" size-md="12" size-sm="12" size-xs="12">
+                                        <div class="pt-2">
+                                            <ion-button mode="ios" expand="block" color="dark"
+                                                        class="ion-text-capitalize"
+                                                        size="large" (click)="claim()">
+                                                        <ion-spinner *ngIf="spinnerWrapper.isClaiming" ></ion-spinner>
+                                                        <span *ngIf="!spinnerWrapper.isClaiming" >Claim</span>
+                                            </ion-button>
+                                        </div>
+
+                                    </ion-col>
+                                    <ion-col>
+                                        <div class="py-8">
+                                            <ion-button mode="ios" color="dark" class="ion-text-capitalize"
+                                            expand="block"
+                                            size="large" (click)="compund()">
+                                            <ion-spinner *ngIf="spinnerWrapper.isCompounding" ></ion-spinner>
+                                            <span *ngIf="!spinnerWrapper.isClaiming" >Compound</span>
+                                            </ion-button>
+                                        </div>
+
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                            <div class="ion-text-center">
+                                <ion-label class="small-text secondary-text">Note: The "Approve" transaction is only
+                                    needed
+                                    when staking/unstaking for the first time; subsequent staking/unstaking only
+                                    requires
+                                    you to perform the "Stake" or "Unstake" transaction.
+                                </ion-label>
+                            </div>
+                        </div>
+
+                        <div class="pt-34">
+                            <div fxLayout="row" fxLayoutAlign="space-between center" class="py-8">
+                                <ion-label class="subtitle bold">Your Balance</ion-label>
+                                <ion-label class="subtitle">{{userStakingInfo?.walletBalance}} SAFU</ion-label>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="space-between center" class="py-8">
+                                <ion-label class="subtitle bold">Your Staked Balance</ion-label>
+                                <ion-label class="subtitle">{{userStakingInfo?.amount}} veSAFU ($0.00)</ion-label>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="space-between center" class="py-8">
+                                <ion-label class="subtitle bold">SAFU reward accrued</ion-label>
+                                <ion-label class="subtitle">{{userStakingInfo?.pendingBTC}} SAFU</ion-label>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="space-between center" class="py-8">
+                                <ion-label class="subtitle bold">USDC reward accrued</ion-label>
+                                <ion-label class="subtitle">{{userStakingInfo?.pendingUSDC}} USDC</ion-label>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="space-between center" class="py-8">
+                                <ion-label class="subtitle bold">Time until tax exempt</ion-label>
+                                <ion-label class="subtitle">{{userStakingInfo?.feeThreshold }}</ion-label>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="space-between center" class="py-8">
+                                <ion-label class="subtitle bold">Withdraw tax</ion-label>
+                                <ion-label class="subtitle">{{userStakingInfo?.fee}}%</ion-label>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</ion-content>

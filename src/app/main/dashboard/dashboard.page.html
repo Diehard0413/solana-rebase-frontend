@@ -1,0 +1,132 @@
+<ion-content class="background-img">
+    <div class="animated">
+        <div class="wrapper">
+            <div class="two"></div>
+            <div class="three"></div>
+            <div class="four"></div>
+            <div class="text"></div>
+        </div>
+    </div>
+    <div class="section__container mt-0" style="z-index: 999; position: relative">
+
+        <div>
+            <div>
+                <ion-label class="big-title bold">Protocol Metrics</ion-label>
+            </div>
+            <div>
+                <ion-label class="small-title secondary-text">Confirm protocol health by auditing supply and reserves</ion-label>
+            </div>
+        </div>
+
+        <div style="max-width: 960px; width: 100%; margin: auto;" class="pt-64">
+
+
+            <div class="dc-card p-24">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size-lg="4" size-md="12" size-sm="12" size-xs="12">
+                            <div class="ion-text-center">
+                                <div class="pb-8">
+                                    <ion-label class="small-title secondary-text">SAFU Price</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label class="h3 bold">${{tokenInfo?.tokenPrice}}</ion-label>
+                                </div>
+                            </div>
+                        </ion-col>
+                        <ion-col size-lg="4" size-md="12" size-sm="12" size-xs="12">
+                            <div class="ion-text-center">
+                                <div class="pb-8">
+                                    <ion-label class="small-title secondary-text">SAFU Current Supply / Total</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label class="h3 bold">{{tokenInfo?.circulation | currency}} / 1,000,000</ion-label>
+                                </div>
+                            </div>
+                        </ion-col>
+                        <ion-col size-lg="4" size-md="12" size-sm="12" size-xs="12">
+                            <div class="ion-text-center">
+                                <div class="pb-8">
+                                    <ion-label class="small-title secondary-text">Market Cap</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label class="h3 bold">${{tokenInfo?.circulatingCap | currency}}</ion-label>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="py-34">
+                        <ion-col size-lg="4" size-md="12" size-sm="12" size-xs="12">
+                            <div class="ion-text-center">
+                                <div class="pb-8">
+                                    <ion-label class="small-title secondary-text">TVL</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label class="h3 bold">${{tokenInfo?.tvl | currency}}</ion-label>
+                                </div>
+                            </div>
+                        </ion-col>
+                        <ion-col size-lg="4" size-md="12" size-sm="12" size-xs="12">
+                            <div class="ion-text-center">
+                                <div class="pb-8">
+                                    <ion-label class="small-title secondary-text">APR</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label class="h3 bold">{{tokenInfo?.apr}}%</ion-label>
+                                </div>
+                            </div>
+                        </ion-col>
+                        <ion-col size-lg="4" size-md="12" size-sm="12" size-xs="12">
+                            <div class="ion-text-center">
+                                <div class="pb-8">
+                                    <ion-label class="small-title secondary-text">Backing Price</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label class="h3 bold">{{this.tokenInfo.backingPrice }}</ion-label>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size-lg="4" size-md="12" size-sm="12" size-xs="12">
+                            <div class="ion-text-center">
+                                <div class="pb-8">
+                                    <ion-label class="small-title secondary-text"> Supply Staked</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label class="h3 bold">{{tokenInfo.totalStakedPercentage}}%</ion-label>
+                                </div>
+                            </div>
+                        </ion-col>
+                        <ion-col size-lg="4" size-md="12" size-sm="12" size-xs="12">
+                            <div class="ion-text-center">
+                                <div class="pb-8">
+                                    <ion-label class="small-title secondary-text">Total SAFU Burned</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label class="h3 bold">{{tokenInfo?.totalburn | currency}} (${{tokenInfo?.totalburnUsd | currency}})</ion-label>
+                                </div>
+                            </div>
+                        </ion-col>
+                        <ion-col size-lg="4" size-md="12" size-sm="12" size-xs="12">
+                            <div class="ion-text-center">
+                                <div class="pb-8">
+                                    <ion-label class="small-title secondary-text">Debase Ratio</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label class="h3 bold">{{tokenInfo?.rebaseRatio}}%</ion-label>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+
+            <div class="ion-text-center py-12">
+                <ion-label class="small-text secondary-text">Note: Debase ratio determines supply reduction ratio for every new token emitted.</ion-label>
+            </div>
+
+        </div>
+
+    </div>
+</ion-content>

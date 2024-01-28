@@ -1,0 +1,49 @@
+:root {
+  --ion-font-family: DMSans-Regullar;
+}
+
+@mixin font-semibold {
+  font-family: DMSans-Medium, serif;
+}
+
+@font-face {
+  font-family: DMSans-Bold;
+  font-style: bold;
+  src: url("../assets/fonts/dmsans/DMSans-Bold.ttf");
+}
+
+@font-face {
+  font-family: DMSans-BoldItalic;
+  font-style: boldItalic;
+  src: url("../assets/fonts/dmsans/DMSans-BoldItalic.ttf");
+}
+
+@font-face {
+  font-family: DMSans-Italic;
+  font-style: italic;
+  src: url("../assets/fonts/dmsans/DMSans-Italic.ttf");
+}
+
+@font-face {
+  font-family: DMSans-Medium;
+  font-style: medium;
+  src: url("../assets/fonts/dmsans/DMSans-Medium.ttf");
+}
+
+@font-face {
+  font-family: DMSans-MediumItalic;
+  font-style: mediumItalic;
+  src: url("../assets/fonts/dmsans/DMSans-MediumItalic.ttf");
+}
+
+@font-face {
+  font-family: DMSans-Regullar;
+  font-style: regular;
+  src: url("../assets/fonts/dmsans/DMSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: Casino;
+  font-style: regular;
+  src: url("../assets/fonts/casino/Casino.ttf");
+}

@@ -1,0 +1,384 @@
+
+.ion-background {
+  background: var(--ion-background-color);
+}
+
+.transparent-background {
+  background: transparent !important;
+}
+
+.text-color {
+  color: var(--ion-text-color);
+}
+
+.secondary-text {
+  color: var(--ion-secondary-text);
+}
+
+.secondary-background {
+  background-color: var(--ion-background-secondary) !important;
+}
+
+.third-background {
+  background-color: var(--ion-background-third)
+}
+
+.ion-secondary-background {
+  --background: var(--ion-background-secondary)
+}
+
+//Typography
+.h1 {
+  font-size: 36px;
+  font-family: DMSans-Regullar, serif;
+
+  &.bold {
+    font-family: DMSans-Bold, sans-serif;
+  }
+}
+
+.h2 {
+  font-size: 30px;
+  font-family: DMSans-Regullar, serif;
+
+  &.bold {
+    font-family: DMSans-Bold, sans-serif;
+  }
+}
+
+.h3 {
+  font-size: 24px;
+  font-family: DMSans-Regullar, serif;
+
+  &.bold {
+    font-family: DMSans-Bold, sans-serif;
+  }
+}
+
+.h4 {
+  font-size: 18px;
+  font-family: DMSans-Regullar, serif;
+
+  &.bold {
+    font-family: DMSans-Bold, sans-serif;
+  }
+}
+
+.h5 {
+  font-size: 14px;
+  font-family: DMSans-Regullar, serif;
+
+  &.bold {
+    font-family: DMSans-Bold, sans-serif;
+  }
+}
+
+.h6 {
+  font-size: 12px;
+}
+
+.p {
+  font-size: 16px;
+}
+
+.no-text-decoration {
+  text-decoration: none;
+}
+
+.big-title {
+  font-size: 30px;
+  letter-spacing: 1px;
+  font-family: DMSans-Regullar, sans-serif;
+
+  &.bold {
+    font-family: DMSans-Bold, sans-serif;
+  }
+}
+
+.title {
+  font-size: 20px;
+  font-family: DMSans-Regullar, sans-serif;
+
+  &.bold {
+    font-family: DMSans-Bold, sans-serif;
+  }
+}
+
+.small-title {
+  font-size: 16px;
+  font-family: DMSans-Regullar, sans-serif;
+
+  &.bold {
+    font-family: DMSans-Bold, sans-serif;
+  }
+}
+
+.subtitle {
+  font-size: 14px !important;
+
+  &.bold {
+    font-family: DMSans-Bold, sans-serif;
+  }
+}
+
+.small-text {
+  font-size: 12px !important;
+
+  &.bold {
+    font-family: DMSans-Bold, sans-serif;
+  }
+}
+
+.extra-small-text {
+  font-size: 12px !important;
+
+  &.bold {
+    font-family: DMSans-Bold, sans-serif;
+  }
+}
+
+//Card
+.dc-card {
+  box-shadow: rgb(var(--ion-background-secondary-rgb), 0.5) 0 0 24px;
+  transition: all .2s ease-in-out;
+  border-radius: 24px;
+  background: var(--ion-background-secondary);
+
+  &.smaller-radius {
+    border-radius: 16px;
+  }
+
+  &:focus {
+    transform: scale(0.9);
+  }
+}
+
+.header__container {
+  width: 100%;
+  height: 100%;
+  max-width: 1279px;
+  min-width: 820px;
+  padding: 0 64px;
+  display: block;
+  margin: auto;
+
+  @media (max-width: 780px) {
+    max-width: 100%;
+    min-width: 100%;
+    padding: 0 16px;
+  }
+}
+
+//Website width
+.section__container {
+  width: 100%;
+  max-width: 2080px;
+  //min-width: 820px;
+  padding: 44px 64px;
+  display: block;
+  margin: 44px auto 44px auto;
+
+  @media (max-width: 780px) {
+    max-width: 100%;
+    min-width: 100%;
+    padding: 22px 16px;
+  }
+}
+
+.section-background {
+  position: absolute;
+  top: -34vh;
+  z-index: -1;
+
+  &.on-top {
+    top: -16vh !important;
+  }
+
+  &.on-middle {
+    top: -4vh;
+  }
+
+  &.left-side {
+    left: -50%;
+    @media (max-width: 993px) {
+      //left: 0;
+      top: -10vh;
+    }
+  }
+
+  &.right-side {
+    right: -50%;
+    @media (max-width: 993px) {
+      //right: 0;
+      top: -10vh;
+    }
+  }
+
+  @media (max-width: 993px) {
+    top: 0;
+    mask-image: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0) 100%);
+    -webkit-mask-image: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0) 100%);
+  }
+
+}
+
+.hover-color {
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    color: var(--ion-color-primary);
+  }
+}
+
+.hover-effect {
+  &:hover {
+    background-color: var(--ion-background-secondary);
+  }
+}
+
+
+.icon-button {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 6px;
+  --padding-bottom: 6px;
+}
+
+
+ion-button {
+  border-radius: 30px;
+}
+
+
+.custom-segment {
+  --background: transparent;
+  width: 100%;
+  padding: 16px;
+  border-radius: 0;
+
+  & .segment-button {
+    --border-radius: 40px;
+    --padding-bottom: 6px;
+    --padding-end: 12px;
+    --padding-start: 12px;
+    --padding-top: 6px;
+    min-width: auto;
+    min-height: auto;
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    --color: var(--ion-text-color);
+    --indicator-color: var(--ion-third-background);
+    --color-checked: var(--color-contrast);
+  }
+}
+
+
+.max-characters {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  //padding-left: 16px;
+
+  img {
+    //height: 36px;
+    //width: 36px;
+  }
+
+  .company {
+    font-size: 24px;
+    padding-left: 6px;
+    font-family: DMSans-Bold, sans-serif;
+  }
+}
+
+.one-line-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+}
+
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+.cards__item {
+  display: flex;
+  padding: 1rem;
+  width: 33.3333%;
+
+  @media(max-width: 1200px) {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+.card {
+  background: var(--ion-background-third);
+  border-radius: 12px;
+  box-shadow: rgb(var(--ion-background-secondary-rgb), 0.5) 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  //overflow: hidden;
+  width: 100%;
+
+  &:hover {
+    .card__image {
+      filter: contrast(100%);
+    }
+  }
+}
+
+.card__content {
+  display: flex;
+  //flex: 1 1 auto;
+  //flex-direction: column;
+  padding: 24px;
+}
+
+.account-container {
+  height: 84.5vh;
+  overflow: auto;
+  position: sticky;
+  top: 0;
+  @media(max-width: 767px) {
+    position: inherit;
+    overflow: visible;
+    height: auto;
+  }
+}
+
+.main-header {
+  margin-top: -94px;
+  top: 94px;
+}
+
+.right-place {
+  border-left: solid var(--ion-color-primary) 1px;
+  @media(max-width: 767px) {
+    border: none
+  }
+}
+
+.background-img{
+  --background: url(../assets/background/background.png) 0 0/100% 100% no-repeat;
+}
+

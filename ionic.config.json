@@ -1,0 +1,7 @@
+{
+  "name": "OHM | OHM",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

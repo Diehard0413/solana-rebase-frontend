@@ -1,0 +1,140 @@
+<ion-content class="background-img">
+  <div class="animated">
+    <div class="wrapper">
+      <div class="two"></div>
+      <div class="three"></div>
+      <div class="four"></div>
+      <div class="text"></div>
+    </div>
+  </div>
+  <div class="section__container mt-0" style="z-index: 999; position: relative">
+
+    <div>
+      <div>
+        <ion-label class="big-title bold">Seed Presale</ion-label>
+      </div>
+    </div>
+
+    <div style="max-width: 960px; width: 100%; margin: auto;" class="pt-64">
+
+
+      <div class="dc-card p-24">
+        <div class="pb-34" fxLayout="column">
+          <ion-label class="h3 bold">Seed Presale</ion-label>
+          <ion-label class="h4 secondary-text">Start date: January 10, 2024 at 08:00 UTC</ion-label>
+        </div>
+        <ion-grid>
+          <ion-row>
+            <ion-col size-lg="6" size-md="12" size-sm="12" size-xs="12">
+              <div class="ion-text-center">
+                <div class="pb-8">
+                  <ion-label class="small-title secondary-text">Presale price</ion-label>
+                </div>
+                <div>
+                  <ion-label class="h3 bold">1.5 USDC</ion-label>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size-lg="6" size-md="12" size-sm="12" size-xs="12">
+              <div class="ion-text-center">
+                <div class="pb-8">
+                  <ion-label class="small-title secondary-text">Total raised</ion-label>
+                </div>
+                <div>
+                  <ion-label class="h3 bold">150,000.00/150,000 USDC</ion-label>
+                </div>
+              </div>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+
+
+        <!-- This is visible when wallet is not connected-->
+        <div fxLayout="column" fxLayoutAlign="center center" class="connect-wallet">
+          <ion-label class="title bold">Connect Your Wallet</ion-label>
+          <ion-label class="subtitle secondary-text">To stake SAFU tokens</ion-label>
+        </div>
+
+
+        <!-- This is visible when wallet is not connected-->
+        <div>
+          <ion-segment value="default" class=" my-24" mode="md" [(ngModel)]="segment">
+
+            <ion-segment-button value="contribute">
+              <ion-label>Contribute</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <div [ngSwitch]="segment">
+            <div *ngSwitchCase="'contribute'">
+
+              <ion-grid>
+                <ion-row>
+                  <ion-col size-lg="8" size-md="12" size-sm="12" size-xs="12">
+                    <div class="w-100-p " style="position:relative;">
+                      <ion-input class="input w-100-p mt-6"
+                                 [min]="0"
+                                 type="number"
+                                 placeholder="0.00"></ion-input>
+                      <div style="position: absolute;top: 10px;right: 30px; z-index: 9;">
+                        <ion-button size="small" fill="clear">
+                          <ion-label class="subtitle bold">Max</ion-label>
+                        </ion-button>
+                      </div>
+                    </div>
+                  </ion-col>
+                  <ion-col size-lg="2" size-md="12" size-sm="12" size-xs="12">
+                    <div class="pt-2">
+                      <ion-button mode="ios" expand="block" color="dark"
+                                  class="ion-text-capitalize"
+                                  size="large">Contribute
+                      </ion-button>
+                    </div>
+
+                  </ion-col>
+                  <ion-col size-lg="2" size-md="12" size-sm="12" size-xs="12">
+                    <div class="pt-2">
+                      <ion-button mode="ios" expand="block" color="dark"
+                                  class="ion-text-capitalize"
+                                  size="large">Claim
+                      </ion-button>
+                    </div>
+
+                  </ion-col>
+
+                </ion-row>
+              </ion-grid>
+
+
+            </div>
+
+
+            <div class="pt-34">
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="py-8">
+                <ion-label class="subtitle bold">Your USDC Balance</ion-label>
+                <ion-label class="subtitle">0.00 USDC</ion-label>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="py-8">
+                <ion-label class="subtitle bold">Your BTC allocation</ion-label>
+                <ion-label class="subtitle">0.00 BTC</ion-label>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="py-8">
+                <ion-label class="subtitle bold">Max per wallet</ion-label>
+                <ion-label class="subtitle">5000 USDC</ion-label>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="py-8">
+                <ion-label class="subtitle bold">Am I Whitelisted?</ion-label>
+                <ion-label class="subtitle">No</ion-label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+</ion-content>

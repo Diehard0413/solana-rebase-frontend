@@ -1,0 +1,38 @@
+.input {
+  //padding: 31px 0 0 0;
+  width: 100%;
+  min-width: 100%;
+  max-width: 900px;
+  --box-shadow: none;
+  --background: transparent;
+
+  ::ng-deep input {
+    border-radius: 8px;
+    border: solid 2px;
+    transition: all .2s ease-in-out;
+    background-color: var(--ion-background-color);
+    padding: 16px 82px 16px 16px;
+    border-color: var(--ion-border-color);
+
+    &:focus {
+      border-color: var(--ion-color-primary);
+    }
+
+  }
+
+  ::ng-deep textarea {
+    border-radius: 8px;
+    border: solid 2px;
+    transition: all .2s ease-in-out;
+    background-color: var(--ion-background-color);
+    padding: 8px 16px;
+    border-color: var(--ion-border-color);
+
+    &:focus {
+      border-color: var(--ion-color-primary);
+    }
+  }
+
+}
+
+

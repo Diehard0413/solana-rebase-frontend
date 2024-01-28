@@ -1,0 +1,157 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+//Swiper
+@import "~swiper/swiper.min.css";
+@import "~swiper/modules/effect-coverflow/effect-coverflow.min.css";
+@import "~swiper/modules/free-mode/free-mode.min.css";
+@import "~swiper/modules/effect-cube/effect-cube.min.css";
+@import "~swiper/modules/pagination/pagination.min.css";
+@import "~swiper/modules/controller/controller.min.css";
+@import "~swiper/modules/keyboard/keyboard.min.css";
+@import "~swiper/modules/mousewheel/mousewheel.min.css";
+@import "~swiper/modules/autoplay/autoplay.min.css";
+@import "~swiper/modules/scrollbar/scrollbar.min.css";
+@import "~swiper/modules/navigation/navigation.min.css";
+@import "~swiper/modules/virtual/virtual.min.css";
+@import "~swiper/modules/effect-fade/effect-fade.min.css";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+/* Custom fonts */
+@import "theme/fonts.scss";
+@import "theme/costum-style.scss";
+@import "theme/_helpers.scss";
+@import "theme/_breakpoints.scss";
+@import "theme/pagination-controlls.scss";
+
+
+
+ion-content {
+  transition: width 2s;
+  @media (max-width: 990px) {
+    --padding-top: 94px
+  }
+}
+
+.wrapper {
+  position: sticky;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: transparent;
+}
+
+.wrapper div {
+  position: absolute;
+  //filter: blur(80px);
+  opacity: 0.8;
+  -webkit-filter: blur(80px);
+}
+
+.animated .one {
+  border-radius: 100%;
+  width: 95vw;
+  height: 35vw;
+  background-color: #f3ba2f;
+  right: -20vw;
+  bottom: -10vw;
+  z-index: 3;
+  animation: fly 12s linear infinite;
+  transform: rotate(0) translate(5vh) rotate(0);
+  opacity: 0.3;
+}
+
+.animated .two {
+  border-radius: 50%;
+  width: 40vw;
+  height: 40vw;
+  background-color: #c99516;
+  bottom: -5vw;
+  right: -10vw;
+  animation: fly 12s linear infinite;
+  transform: rotate(0) translate(1vh) rotate(0);
+  opacity: 0.3;
+}
+
+.animated .three {
+  border-radius: 100%;
+  width: 90vw;
+  height: 80vw;
+  bottom: -80px;
+  right: -100px;
+  background-color: #d7ad49;
+  animation: flyPlus 10s linear infinite;
+  -webkit-animation: flyPlus 10s linear infinite;
+  transform: rotate(0) translate(10vh) rotate(0);
+  -webkit-transform: rotate(0) translate(10vh) rotate(0);
+  -moz-transform: rotate(0) translate(10vh) rotate(0);
+  -ms-transform: rotate(0) translate(10vh) rotate(0);
+  -o-transform: rotate(0) translate(10vh) rotate(0);
+  opacity: 0.3;
+}
+
+.four {
+  border-radius: 100%;
+  width: 60vw;
+  height: 70vw;
+  margin: auto;
+  bottom: 0;
+  right: 0;
+  background-color: #efd189;
+  animation: flyPlus 15s linear infinite;
+  -webkit-animation: flyPlus 15s linear infinite;
+  transform: rotate(0) translate(200px) rotate(0);
+  -webkit-transform: rotate(0) translate(200px) rotate(0);
+  -moz-transform: rotate(0) translate(200px) rotate(0);
+  -ms-transform: rotate(0) translate(200px) rotate(0);
+  -o-transform: rotate(0) translate(200px) rotate(0);
+  opacity: 0.3;
+}
+
+
+@keyframes fly {
+  100% {
+    transform: rotate(2turn) translate(10vh) rotate(-2turn);
+    -webkit-transform: rotate(2turn) translate(10vh) rotate(-2turn);
+    -moz-transform: rotate(2turn) translate(10vh) rotate(-2turn);
+    -ms-transform: rotate(2turn) translate(10vh) rotate(-2turn);
+    -o-transform: rotate(2turn) translate(10vh) rotate(-2turn);
+  }
+}
+
+@keyframes flyPlus {
+  100% {
+    transform: rotate(-2turn) translate(200px) rotate(2turn);
+    -webkit-transform: rotate(-2turn) translate(200px) rotate(2turn);
+    -moz-transform: rotate(-2turn) translate(200px) rotate(2turn);
+    -ms-transform: rotate(-2turn) translate(200px) rotate(2turn);
+    -o-transform: rotate(-2turn) translate(200px) rotate(2turn);
+  }
+}
+
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>SAFU</title>
+    <base href="/"/>
+
+    <meta name="color-scheme" content="dark"/>
+    <meta name="viewport"
+          content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+
+    <link rel="icon" type="image/png" href="assets/icon/favicon.png"/>
+
+    <!-- add to homescreen for ios -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#1976d2">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body >
+<app-root></app-root>
+<script>
+    var process = process || {
+        env: {DEBUG: undefined},
+        version: []
+    };
+</script>
+<script>
+    if (window.ethereum) {
+        handleEthereum();
+    } else {
+        window.addEventListener('ethereum#initialized', handleEthereum, {
+            once: true,
+        });
+
+        // If the event is not dispatched by the end of the timeout,
+        // the user probably doesn't have MetaMask installed.
+        setTimeout(handleEthereum, 3000); // 3 seconds
+    }
+
+    function handleEthereum() {
+        const {
+            ethereum
+        } = window;
+        if (ethereum && ethereum.isMetaMask) {
+            // alert('Ethereum successfully detected!');
+            // Access the decentralized web!
+        } else {
+            // alert('Please install MetaMask!');
+        }
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/web3@1.2.2/dist/web3.min.js"></script>
+<script>
+    window.addEventListener('load', function () {
+        if (window.ethereum) {
+            window.web3 = new Web3(ethereum);
+            ethereum.enable()
+                .then(() => {
+                    console.log("Ethereum enabled");
+
+                    web3.eth.getAccounts(function (err, acc) {
+                        if (err != null) {
+                            self.setStatus("There was an error fetching your accounts");
+                            return;
+                        }
+                        if (acc.length > 0) {
+                        }
+                    });
+                })
+                .catch(() => {
+                    console.warn('User didn\'t allow access to accounts.');
+                });
+        } else {
+            console.log("Non-Ethereum browser detected. 'Please install an Ethereum-compatible browser or extension like MetaMask to use this dApp!'
+            );
+        }
+    });
+</script>
+<noscript>Please enable JavaScript to continue using this application.</noscript>
+</body>
+
+</html>
